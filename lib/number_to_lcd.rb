@@ -11,10 +11,17 @@ class NumberToLcd
 				lcd_numbers = numbers.map do |digit| 
 					digit_reppresentation(digit)
 				end
-				return lcd_numbers.join.chop if number < 10
+				transpose(lcd_numbers, numbers)
 	    end
 	
 			private
+			def transpose(lcd_numbers, numbers)
+				lcd_numbers.transpose.map{|row| add_padding_and_displace_carriage_return( row ) }.to_s.chop
+			end
+			def add_padding_and_displace_carriage_return(row)
+				row.join(" ").gsub(/\n/, '') + "\n"
+			end
+			
 			def to_string_array(number)
 				number.to_s.split("")
 			end
