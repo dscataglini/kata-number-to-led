@@ -11,11 +11,11 @@ class NumberToLcd
 				lcd_numbers = numbers.map do |digit| 
 					digit_reppresentation(digit)
 				end
-				transpose(lcd_numbers, numbers)
+				transpose(lcd_numbers)
 	    end
 	
 			private
-			def transpose(lcd_numbers, numbers)
+			def transpose(lcd_numbers)
 				lcd_numbers.transpose.map{|row| add_padding_and_displace_carriage_return( row ) }.to_s.chop
 			end
 			def add_padding_and_displace_carriage_return(row)
